@@ -19,15 +19,42 @@ public class Main {
         "Jeremy Wright",
     };
 
-    private static final int EXPENSE_STAT_COUNT = 7;
-
     public static void main(String[] args) {
-        var stats = makeRandomStats(EXPENSE_STAT_COUNT);
+        var stats = makeRandomStats(7);
         for (var stat : stats) {
             if (stat != null) {
                 stat.show();
+                System.out.println();
             }
         }
+
+        stats[stats.length - 1].setTransportationExpenses(666);
+
+        System.out.println("Duration = " + (stats[0].getDayCount() + stats[1].getDayCount()));
+        System.out.println();
+
+        for (var stat : stats) {
+            if (stat != null) {
+                System.out.println(stat.toString());
+            }
+        }
+        System.out.println();
+
+        var sum = Arrays.stream(stats)
+            .filter(Objects::nonNull)
+            .map(stat -> stat.getTotal())
+            .reduce((acc, item) -> acc + item)
+            .get();
+        System.out.println("Total expenses sum = " + sum);
+        System.out.println();
+
+        var maxTotalExpensesAccountName = Arrays.stream(stats)
+            .filter(Objects::nonNull)
+            .max(Comparator.comparingInt(ExpenseStat::getTotal))
+            .get()
+            .getAccountName();
+        System.out.println("Account with greatest total expenses: " + maxTotalExpensesAccountName);
+        System.out.println();
     }
 
     private static ExpenseStat[] makeRandomStats(int count) {
