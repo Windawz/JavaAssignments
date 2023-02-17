@@ -92,7 +92,7 @@ public class ExpenseStat {
             "account = " + getAccountNameOrMissing() + '\n' +
             "transport = " + getTransportationExpenses() + '\n' +
             "days = " + getDayCount() + '\n' +
-            "total = " + getTotal() + '\n'
+            "total = " + getTotal()
         );
     }
 
