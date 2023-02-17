@@ -29,7 +29,9 @@ public class Main {
             }
         }
 
+        System.out.println("Setting transportation expenses on the last item...");
         stats[stats.length - 1].setTransportationExpenses(666);
+        System.out.println();
 
         System.out.println("Duration = " + (stats[0].getDayCount() + stats[1].getDayCount()));
         System.out.println();
