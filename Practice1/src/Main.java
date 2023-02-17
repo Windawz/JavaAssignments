@@ -1,7 +1,7 @@
 import by.gsu.pms.ExpenseStat;
 
 import java.util.*;
-import java.util.Set;
+import java.util.function.Predicate;
 
 public class Main {
     private static final String[] ACCOUNT_NAMES = {
@@ -71,43 +71,74 @@ public class Main {
             throw new IllegalArgumentException("Count may not be negative");
         }
 
-        var usedNames = new HashSet<String>(ACCOUNT_NAMES.length);
-        var random = new Random(makeSeedFromCurrentTime());
-        var stats = new ExpenseStat[count];
+        var random = makeRandom();
 
+        var rates = getRandomInts(random, 100, 2000);
+        var accountNames = getRandomNames(random, ACCOUNT_NAMES);
+        var expenses = getRandomInts(random, 0, 2000);
+        var dayCounts = getRandomInts(random, 2, 31);
+
+        var stats = new ExpenseStat[count];
         for (int i = 0; i < stats.length; i++) {
             if (i == 2) {
                 stats[i] = null;
             } else if (i == stats.length - 1) {
                 stats[i] = new ExpenseStat();
             } else {
-                stats[i] = makeRandomStat(random, usedNames);
+                stats[i] = new ExpenseStat(
+                    rates.get(i),
+                    accountNames.get(i),
+                    expenses.get(i),
+                    dayCounts.get(i));
             }
         }
 
         return stats;
     }
 
-    private static ExpenseStat makeRandomStat(Random random, Set<String> usedNames) {
-        return new ExpenseStat(
-            random.nextInt(10, 200),
-            pickRandomName(random, usedNames),
-            random.nextInt(400, 1000),
-            random.nextInt(2, 20)
-        );
+    private static List<Integer> getRandomInts(Random random, int origin, int bound) {
+        if (origin >= bound) {
+            throw new IllegalArgumentException("Origin may not be greater than or equal to bound");
+        }
+        var count = bound - origin;
+        var list = new ArrayList<Integer>(count);
+        for (int i = 0; i < count; i++) {
+            list.add(random.nextInt(origin, bound));
+        }
+        return list;
     }
 
-    private static String pickRandomName(Random random, Set<String> usedNames) {
-        if (usedNames.size() < ACCOUNT_NAMES.length) {
-            String name = null;
-            do {
-                name = ACCOUNT_NAMES[random.nextInt(0, ACCOUNT_NAMES.length)];
-            } while (usedNames.contains(name));
-            usedNames.add(name);
-            return name;
-        } else {
-            throw new IllegalStateException("All names have been used up");
+    private static List<String> getRandomNames(Random random, String[] names) {
+        return getShuffledList(random, Arrays.asList(names));
+    }
+
+    private static <T> List<T> getShuffledList(Random random, List<T> list) {
+        int count = list.size();
+        var shuffledIndices = new ArrayList<Integer>(count);
+        for (int i = 0; i < count; i++) {
+            int shuffledIndex = getRandomIntUntil(random, 0, count, x -> !shuffledIndices.contains(x));
+            shuffledIndices.add(shuffledIndex);
         }
+        var shuffledItemsList = new ArrayList<>(List.copyOf(list));
+        for (int i = 0; i < count; i++) {
+            shuffledItemsList.set(i, list.get(shuffledIndices.get(i)));
+        }
+        return shuffledItemsList;
+    }
+
+    private static int getRandomIntUntil(Random random, int origin, int bound, Predicate<Integer> condition) {
+        if (origin >= bound) {
+            throw new IllegalArgumentException("Origin may not be greater than or equal to bound");
+        }
+        int i;
+        do {
+            i = random.nextInt(origin, bound);
+        } while (!condition.test(i));
+        return i;
+    }
+
+    private static Random makeRandom() {
+        return new Random(makeSeedFromCurrentTime());
     }
 
     private static long makeSeedFromCurrentTime() {
