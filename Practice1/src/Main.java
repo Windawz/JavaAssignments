@@ -54,17 +54,17 @@ public class Main {
 
     private static String getMaxTotalExpensesAccountName(ExpenseStat[] stats) {
         return Arrays.stream(stats)
-            .filter(Objects::nonNull)
-            .max(Comparator.comparingInt(ExpenseStat::getTotal))
+            .filter(stat -> stat != null)
+            .max(Comparator.comparingInt(stat -> stat.getTotal()))
             .get()
             .getAccountName();
     }
 
     private static int getTotalExpensesSum(ExpenseStat[] stats) {
         return Arrays.stream(stats)
-            .filter(Objects::nonNull)
-            .map(ExpenseStat::getTotal)
-            .reduce(Integer::sum)
+            .filter(stat -> stat != null)
+            .map(stat -> stat.getTotal())
+            .reduce((acc, value) -> acc + value)
             .get();
     }
 
