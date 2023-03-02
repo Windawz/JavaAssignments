@@ -1,9 +1,8 @@
-import by.gsu.pms.practice2.CommonPlan;
-import by.gsu.pms.practice2.Money;
-import by.gsu.pms.practice2.TaskShowcaser;
+import by.gsu.pms.practice2.*;
 import by.gsu.pms.practice2.part1.Part1Showcaser;
 import by.gsu.pms.practice2.part2.Part2Showcaser;
 
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -20,7 +19,18 @@ public class Main {
         }
     }
 
-    private static void runShowcaser(TaskShowcaser showcaser, Predicate<CommonPlan> predicate) {
+    private static void runShowcaser(
+        TaskShowcaser showcaser,
+        Predicate<CommonPlan> predicate
+    ) {
+        String showcaserName = Text.centered(
+            Text.capitalized(
+                showcaser.getClass().getSimpleName()),
+            24);
+
+        System.out.println(String.format(
+            "====%1$24s====",
+            showcaserName));
         System.out.println("--      Available Plans       --");
         showcaser.printPlans();
         System.out.println("--      Total Plan Count      --");
