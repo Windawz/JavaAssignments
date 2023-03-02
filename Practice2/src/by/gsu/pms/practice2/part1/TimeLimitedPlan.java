@@ -4,6 +4,7 @@ import by.gsu.pms.practice2.CallTime;
 import by.gsu.pms.practice2.Money;
 import by.gsu.pms.practice2.Period;
 
+import java.text.MessageFormat;
 import java.util.Optional;
 
 public class TimeLimitedPlan extends Plan {
@@ -21,5 +22,11 @@ public class TimeLimitedPlan extends Plan {
     @Override
     public Optional<CallTime> tryGetCallTime() {
         return Optional.of(getCallTime());
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()
+            + MessageFormat.format(" Call Time: {0};", getCallTime());
     }
 }

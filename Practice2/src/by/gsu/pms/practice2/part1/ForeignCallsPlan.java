@@ -4,7 +4,9 @@ import by.gsu.pms.practice2.ForeignCountry;
 import by.gsu.pms.practice2.Money;
 import by.gsu.pms.practice2.Period;
 
+import java.text.MessageFormat;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Optional;
 
 public class ForeignCallsPlan extends Plan {
@@ -22,5 +24,15 @@ public class ForeignCallsPlan extends Plan {
     @Override
     public Optional<EnumSet<ForeignCountry>> tryGetForeignCountries() {
         return Optional.of(getForeignCountries());
+    }
+
+    @Override
+    public String toString() {
+        List<String> countryNameList = getForeignCountries()
+            .stream()
+            .map(country -> country.toString())
+            .toList();
+        return super.toString()
+            + MessageFormat.format(" Foreign Countries: {0};", String.join(", ", countryNameList));
     }
 }

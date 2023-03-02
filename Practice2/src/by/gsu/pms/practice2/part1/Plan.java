@@ -2,6 +2,7 @@ package by.gsu.pms.practice2.part1;
 
 import by.gsu.pms.practice2.*;
 
+import java.text.MessageFormat;
 import java.util.EnumSet;
 import java.util.Optional;
 
@@ -45,5 +46,10 @@ public class Plan implements CommonPlan {
     @Override
     public Optional<EnumSet<ForeignCountry>> tryGetForeignCountries() {
         return Optional.empty();
+    }
+
+    @Override
+    public String toString() {
+        return MessageFormat.format("Fee: {0}; Period: {1};", getFee(), getPeriod());
     }
 }

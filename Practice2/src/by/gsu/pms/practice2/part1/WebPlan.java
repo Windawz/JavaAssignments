@@ -4,6 +4,7 @@ import by.gsu.pms.practice2.Money;
 import by.gsu.pms.practice2.Period;
 import by.gsu.pms.practice2.Traffic;
 
+import java.text.MessageFormat;
 import java.util.Optional;
 
 public class WebPlan extends Plan {
@@ -21,5 +22,11 @@ public class WebPlan extends Plan {
     @Override
     public Optional<Traffic> tryGetTraffic() {
         return Optional.of(getTraffic());
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()
+            + MessageFormat.format(" Traffic: {0};", getTraffic());
     }
 }
