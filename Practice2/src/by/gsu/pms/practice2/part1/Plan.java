@@ -1,9 +1,11 @@
 package by.gsu.pms.practice2.part1;
 
-import by.gsu.pms.practice2.Money;
-import by.gsu.pms.practice2.Period;
+import by.gsu.pms.practice2.*;
 
-public class Plan {
+import java.util.EnumSet;
+import java.util.Optional;
+
+public class Plan implements CommonPlan {
     public Plan(Money fee, Period period) {
         _fee = fee;
         _period = period;
@@ -18,5 +20,30 @@ public class Plan {
 
     public Period getPeriod() {
         return _period;
+    }
+
+    @Override
+    public Optional<Money> tryGetFee() {
+        return Optional.of(getFee());
+    }
+
+    @Override
+    public Optional<Period> tryGetPeriod() {
+        return Optional.of(getPeriod());
+    }
+
+    @Override
+    public Optional<Traffic> tryGetTraffic() {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<CallTime> tryGetCallTime() {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<EnumSet<ForeignCountry>> tryGetForeignCountries() {
+        return Optional.empty();
     }
 }

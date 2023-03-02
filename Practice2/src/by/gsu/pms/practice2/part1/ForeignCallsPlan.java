@@ -5,6 +5,7 @@ import by.gsu.pms.practice2.Money;
 import by.gsu.pms.practice2.Period;
 
 import java.util.EnumSet;
+import java.util.Optional;
 
 public class ForeignCallsPlan extends Plan {
     public ForeignCallsPlan(Money fee, Period period, EnumSet<ForeignCountry> foreignCountries) {
@@ -16,5 +17,10 @@ public class ForeignCallsPlan extends Plan {
 
     public EnumSet<ForeignCountry> getForeignCountries() {
         return EnumSet.copyOf(_foreignCountries);
+    }
+
+    @Override
+    public Optional<EnumSet<ForeignCountry>> tryGetForeignCountries() {
+        return Optional.of(getForeignCountries());
     }
 }
