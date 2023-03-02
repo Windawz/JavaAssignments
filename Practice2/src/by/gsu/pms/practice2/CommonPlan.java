@@ -4,9 +4,9 @@ import java.util.EnumSet;
 import java.util.Optional;
 
 public interface CommonPlan {
-    Optional<Money> getFee();
-    Optional<Period> getPeriod();
-    Optional<Traffic> getTraffic();
-    Optional<CallTime> getCallTime();
-    Optional<EnumSet<ForeignCountry>> getForeignCountries();
+    Optional<Money> tryGetFee();
+    Optional<Period> tryGetPeriod();
+    Optional<Traffic> tryGetTraffic();
+    Optional<CallTime> tryGetCallTime();
+    Optional<EnumSet<ForeignCountry>> tryGetForeignCountries();
 }
