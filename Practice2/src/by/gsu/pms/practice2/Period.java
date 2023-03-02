@@ -1,5 +1,7 @@
 package by.gsu.pms.practice2;
 
+import java.text.MessageFormat;
+
 public class Period {
     public Period(int dayCount) {
         if (dayCount < 0) {
@@ -13,5 +15,10 @@ public class Period {
 
     public int getDays() {
         return _dayCount;
+    }
+
+    @Override
+    public String toString() {
+        return MessageFormat.format("{0} days", getDays());
     }
 }

@@ -1,5 +1,7 @@
 package by.gsu.pms.practice2;
 
+import java.text.MessageFormat;
+
 public class Traffic {
     public Traffic(int megabyteCount) {
         if (megabyteCount < 0) {
@@ -22,5 +24,10 @@ public class Traffic {
 
     public int getMegabyteCount() {
         return _megabyteCount;
+    }
+
+    @Override
+    public String toString() {
+        return MessageFormat.format("{0} megabytes", isUnlimited() ? "∞" : getMegabyteCount());
     }
 }

@@ -1,5 +1,7 @@
 package by.gsu.pms.practice2;
 
+import java.text.MessageFormat;
+
 public class CallTime {
     public CallTime(int minuteCount) {
         if (minuteCount < 0) {
@@ -13,5 +15,10 @@ public class CallTime {
 
     public int getMinuteCount() {
         return _minuteCount;
+    }
+
+    @Override
+    public String toString() {
+        return MessageFormat.format("{0}m", getMinuteCount());
     }
 }
