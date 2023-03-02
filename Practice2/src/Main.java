@@ -27,9 +27,7 @@ public class Main {
                 showcaser.getClass().getSimpleName()),
             24);
 
-        System.out.println(String.format(
-            "====%1$24s====",
-            showcaserName));
+        System.out.printf("====%s====%n", showcaserName);
         System.out.println("--      Available Plans       --");
         showcaser.printPlans();
         System.out.println("--      Total Plan Count      --");
