@@ -1,4 +1,4 @@
-package by.gsu.pms;
+package by.gsu.pms.practice2;
 
 public class Money {
     public Money(int value) {
