@@ -1,4 +1,5 @@
 import by.gsu.pms.practice2.CommonPlan;
+import by.gsu.pms.practice2.Money;
 import by.gsu.pms.practice2.TaskShowcaser;
 
 import java.util.List;
@@ -7,10 +8,11 @@ import java.util.function.Predicate;
 public class Main {
     public static void main(String[] args) {
         List<TaskShowcaser> showcasers = List.of();
-        List<Predicate<CommonPlan>> predicates = List.of();
+        Predicate<CommonPlan> predicate = plan ->
+            plan.tryGetFee().orElse(new Money(0)).getValue() > 1000;
 
-        for (int i = 0; i < Math.min(showcasers.size(), predicates.size()); i++) {
-            runShowcaser(showcasers.get(i), predicates.get(i));
+        for (TaskShowcaser showcaser : showcasers) {
+            runShowcaser(showcaser, predicate);
         }
     }
 
