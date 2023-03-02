@@ -1,6 +1,7 @@
 package by.gsu.pms.practice2.part1;
 
-import by.gsu.pms.practice2.*;
+import by.gsu.pms.practice2.Money;
+import by.gsu.pms.practice2.Period;
 
 public class Plan {
     public Plan(Money fee, Period period) {
