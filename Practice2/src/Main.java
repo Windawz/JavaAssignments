@@ -2,6 +2,7 @@ import by.gsu.pms.practice2.CommonPlan;
 import by.gsu.pms.practice2.Money;
 import by.gsu.pms.practice2.TaskShowcaser;
 import by.gsu.pms.practice2.part1.Part1Showcaser;
+import by.gsu.pms.practice2.part2.Part2Showcaser;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -9,7 +10,8 @@ import java.util.function.Predicate;
 public class Main {
     public static void main(String[] args) {
         List<TaskShowcaser> showcasers = List.of(
-            new Part1Showcaser());
+            new Part1Showcaser(),
+            new Part2Showcaser());
         Predicate<CommonPlan> predicate = plan ->
             plan.tryGetFee().orElse(new Money(0)).getValue() > 1000;
 
