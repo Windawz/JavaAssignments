@@ -23,10 +23,4 @@ public class WebPlan extends Plan {
     public Optional<Traffic> tryGetTraffic() {
         return Optional.of(getTraffic());
     }
-
-    @Override
-    public String toString() {
-        return super.toString()
-            + MessageFormat.format(" Traffic: {0};", getTraffic());
-    }
 }

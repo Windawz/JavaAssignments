@@ -25,14 +25,4 @@ public class ForeignCallsPlan extends Plan {
     public Optional<EnumSet<ForeignCountry>> tryGetForeignCountries() {
         return Optional.of(getForeignCountries());
     }
-
-    @Override
-    public String toString() {
-        List<String> countryNameList = getForeignCountries()
-            .stream()
-            .map(country -> country.toString())
-            .toList();
-        return super.toString()
-            + MessageFormat.format(" Foreign Countries: {0};", String.join(", ", countryNameList));
-    }
 }

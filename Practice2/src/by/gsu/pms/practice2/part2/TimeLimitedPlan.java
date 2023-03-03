@@ -43,10 +43,4 @@ public class TimeLimitedPlan implements Plan {
     public CallTime getCallTime() {
         return _callTime;
     }
-
-    @Override
-    public String toString() {
-        return MessageFormat.format(
-            "{0} Call Time: {1};", _simplePlan.toString(), getCallTime());
-    }
 }

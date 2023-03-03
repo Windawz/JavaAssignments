@@ -39,10 +39,4 @@ public class SimplePlan implements Plan {
     public Period getPeriod() {
         return _period;
     }
-
-    @Override
-    public String toString() {
-        return MessageFormat.format(
-            "Fee: {0}; Period: {1};", getFee(), getPeriod());
-    }
 }

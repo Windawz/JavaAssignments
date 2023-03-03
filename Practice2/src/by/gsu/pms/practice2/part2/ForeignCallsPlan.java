@@ -48,16 +48,4 @@ public class ForeignCallsPlan implements Plan {
     public EnumSet<ForeignCountry> getForeignCountries() {
         return EnumSet.copyOf(_foreignCountries);
     }
-
-    @Override
-    public String toString() {
-        List<String> foreignCountryNames = getForeignCountries()
-            .stream()
-            .map(ForeignCountry::toString)
-            .toList();
-        return MessageFormat.format(
-            "{0} Foreign Countries: {1};",
-            _simplePlan.toString(),
-            String.join(", ", foreignCountryNames));
-    }
 }

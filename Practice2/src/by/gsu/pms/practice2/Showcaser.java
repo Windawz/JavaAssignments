@@ -29,7 +29,9 @@ public class Showcaser {
     }
 
     private void printPlans(List<CommonPlan> plans) {
-        plans.forEach(System.out::println);
+        plans.stream()
+            .map(CommonPlan::getInfoString)
+            .forEach(System.out::println);
     }
 
     private void printPlanCount(List<CommonPlan> plans) {
@@ -41,12 +43,14 @@ public class Showcaser {
             .sorted(Comparator.comparingInt(plan ->
                 plan.tryGetFee()
                     .orElse(new Money(0)).getValue()))
+            .map(CommonPlan::getInfoString)
             .forEach(System.out::println);
     }
 
     private void printMatchingPlans(List<CommonPlan> plans) {
         plans.stream()
             .filter(_predicate)
+            .map(CommonPlan::getInfoString)
             .forEach(System.out::println);
     }
 }

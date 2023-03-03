@@ -47,9 +47,4 @@ public class Plan implements CommonPlan {
     public Optional<EnumSet<ForeignCountry>> tryGetForeignCountries() {
         return Optional.empty();
     }
-
-    @Override
-    public String toString() {
-        return MessageFormat.format("Fee: {0}; Period: {1};", getFee(), getPeriod());
-    }
 }

@@ -23,10 +23,4 @@ public class TimeLimitedPlan extends Plan {
     public Optional<CallTime> tryGetCallTime() {
         return Optional.of(getCallTime());
     }
-
-    @Override
-    public String toString() {
-        return super.toString()
-            + MessageFormat.format(" Call Time: {0};", getCallTime());
-    }
 }

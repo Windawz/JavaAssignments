@@ -43,10 +43,4 @@ public class WebPlan implements Plan {
     public Traffic getTraffic() {
         return _traffic;
     }
-
-    @Override
-    public String toString() {
-        return MessageFormat.format(
-            "{0} Traffic: {1};", _simplePlan.toString(), getTraffic());
-    }
 }
