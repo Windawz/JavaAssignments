@@ -13,12 +13,12 @@ public class Period {
 
     private final int _dayCount;
 
-    public int getDays() {
+    public int getDayCount() {
         return _dayCount;
     }
 
     @Override
     public String toString() {
-        return MessageFormat.format("{0} days", getDays());
+        return MessageFormat.format("{0} days", getDayCount());
     }
 }
