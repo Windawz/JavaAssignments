@@ -16,9 +16,9 @@ public class Text {
                 if (Character.isUpperCase(cp)) {
                     shouldSplit = true;
                 } else if (Character.isDigit(cp)) {
-                    if (!Character.isDigit(context.lastCp)) {
-                        shouldSplit = true;
-                    }
+                    shouldSplit =
+                        !Character.isDigit(context.lastCp)
+                        && !Character.isWhitespace(context.lastCp);
                 }
             }
 
@@ -40,15 +40,10 @@ public class Text {
         }
 
         int cpCount = value.codePointCount(0, value.length());
-        int whiteSpaceCountPerHalf = cpCount / 4;
-        StringBuilder builder = new StringBuilder(cpCount);
-        for (int i = 0; i < whiteSpaceCountPerHalf; i++) {
-            builder.append(' ');
-        }
-        builder.append(value);
-        for (int i = 0; i < whiteSpaceCountPerHalf; i++) {
-            builder.append(' ');
-        }
-        return builder.toString();
+        int length = Math.max(cpCount, minWidth);
+        int whiteSpaceCountPerHalf = (length - cpCount) / 2;
+        return " ".repeat(whiteSpaceCountPerHalf)
+            + value
+            + " ".repeat(whiteSpaceCountPerHalf);
     }
 }
