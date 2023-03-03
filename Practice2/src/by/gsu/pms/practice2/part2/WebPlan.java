@@ -21,16 +21,6 @@ public class WebPlan implements Plan {
     }
 
     @Override
-    public Optional<CallTime> tryGetCallTime() {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<EnumSet<ForeignCountry>> tryGetForeignCountries() {
-        return Optional.empty();
-    }
-
-    @Override
     public Money getFee() {
         return _simplePlan.getFee();
     }

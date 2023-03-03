@@ -21,16 +21,6 @@ public class ForeignCallsPlan implements Plan {
     private final EnumSet<ForeignCountry> _foreignCountries;
 
     @Override
-    public Optional<Traffic> tryGetTraffic() {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<CallTime> tryGetCallTime() {
-        return Optional.empty();
-    }
-
-    @Override
     public Optional<EnumSet<ForeignCountry>> tryGetForeignCountries() {
         return Optional.of(getForeignCountries());
     }

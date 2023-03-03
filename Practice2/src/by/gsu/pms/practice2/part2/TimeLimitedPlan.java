@@ -16,18 +16,8 @@ public class TimeLimitedPlan implements Plan {
     private final CallTime _callTime;
 
     @Override
-    public Optional<Traffic> tryGetTraffic() {
-        return Optional.empty();
-    }
-
-    @Override
     public Optional<CallTime> tryGetCallTime() {
         return Optional.of(getCallTime());
-    }
-
-    @Override
-    public Optional<EnumSet<ForeignCountry>> tryGetForeignCountries() {
-        return Optional.empty();
     }
 
     @Override

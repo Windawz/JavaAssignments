@@ -16,21 +16,6 @@ public class SimplePlan implements Plan {
     private final Period _period;
 
     @Override
-    public Optional<Traffic> tryGetTraffic() {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<CallTime> tryGetCallTime() {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<EnumSet<ForeignCountry>> tryGetForeignCountries() {
-        return Optional.empty();
-    }
-
-    @Override
     public Money getFee() {
         return _fee;
     }

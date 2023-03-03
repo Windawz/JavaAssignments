@@ -32,19 +32,4 @@ public class Plan implements CommonPlan {
     public Optional<Period> tryGetPeriod() {
         return Optional.of(getPeriod());
     }
-
-    @Override
-    public Optional<Traffic> tryGetTraffic() {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<CallTime> tryGetCallTime() {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<EnumSet<ForeignCountry>> tryGetForeignCountries() {
-        return Optional.empty();
-    }
 }
