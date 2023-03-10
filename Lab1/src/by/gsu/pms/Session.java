@@ -21,27 +21,12 @@ public class Session implements AutoCloseable {
     private boolean _closed = false;
 
     public void run() {
-        printManagers();
-        var scanner = new Scanner(System.in);
-        var loopContext = new Object() {
-            boolean running = true;
-        };
-        while (loopContext.running) {
-            Optional<Manager> manager = scanManager(
-                scanner,
-                input -> input.equalsIgnoreCase("exit")
-            );
-            manager.ifPresentOrElse(
-                m -> _managers.add(m),
-                () -> loopContext.running = false
-            );
-        }
+
     }
 
     @Override
     public void close() throws IOException {
         if (!_closed) {
-            serializeManagers();
             _closed = true;
         }
     }
@@ -54,35 +39,6 @@ public class Session implements AutoCloseable {
                     manager.getSurname(),
                     manager.getAge(),
                     manager.isCompetent() ? "competent" : "incompetent"));
-        }
-    }
-
-    private void serializeManagers() throws IOException {
-        if (_managers.isEmpty()) {
-            return;
-        }
-        try (var serializer = new ManagerSerializer(_managerFileName)) {
-            for (var manager : _managers) {
-                serializer.serialize(manager);
-            }
-        }
-    }
-
-    private void deserializeManagers(
-        String managerFileName
-    ) throws IOException, ClassNotFoundException {
-        if (!new File(managerFileName).exists()) {
-            return;
-        }
-        try (var deserializer = new ManagerDeserializer(managerFileName)) {
-            Optional<Manager> current = Optional.empty();
-            while (true) {
-                current = deserializer.deserializeNext();
-                if (current.isEmpty()) {
-                    break;
-                }
-                _managers.add(current.orElseThrow());
-            }
         }
     }
 
