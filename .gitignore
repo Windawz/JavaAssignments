@@ -79,3 +79,6 @@ fabric.properties
 # Ignore anything IntelliJ IDEA specific
 .idea/
 *.iml
+
+# Ignore Java serialized files
+*.ser
