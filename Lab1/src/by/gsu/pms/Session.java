@@ -13,7 +13,6 @@ public class Session implements AutoCloseable {
         String managerFileName
     ) throws IOException, ClassNotFoundException {
         _managerFileName = managerFileName;
-        deserializeManagers(_managerFileName);
     }
 
     private final String _managerFileName;
