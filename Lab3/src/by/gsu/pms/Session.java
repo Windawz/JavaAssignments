@@ -15,12 +15,15 @@ public class Session implements AutoCloseable {
         _managerFileName = managerFileName;
         deserializeManagers(_managerFileName);
     }
-
+    
     private final String _managerFileName;
     private final ArrayList<Manager> _managers = new ArrayList<>();
     private boolean _closed = false;
-
+    
     public void run() {
+        throwIfClosed();
+        printAverageManagerAge();
+        printCompetentManagerCount();
         printManagers();
         var scanner = new Scanner(System.in);
         var loopContext = new Object() {
@@ -37,7 +40,7 @@ public class Session implements AutoCloseable {
             );
         }
     }
-
+    
     @Override
     public void close() throws IOException {
         if (!_closed) {
@@ -45,7 +48,24 @@ public class Session implements AutoCloseable {
             _closed = true;
         }
     }
-
+    
+    private void printCompetentManagerCount() {
+        System.out.println("Competent manager count:");
+        System.out.println(
+            _managers.stream()
+                .filter(Manager::isCompetent)
+                .count());
+    }
+    
+    private void printAverageManagerAge() {
+        System.out.println("Average age:");
+        System.out.println(
+            _managers.stream()
+                .map(Manager::getAge)
+                .reduce(0, Integer::sum)
+                / _managers.size());
+    }
+    
     private void printManagers() {
         for (var manager : _managers) {
             System.out.println(
@@ -56,7 +76,7 @@ public class Session implements AutoCloseable {
                     manager.isCompetent() ? "competent" : "incompetent"));
         }
     }
-
+    
     private void serializeManagers() throws IOException {
         if (_managers.isEmpty()) {
             return;
@@ -67,7 +87,7 @@ public class Session implements AutoCloseable {
             }
         }
     }
-
+    
     private void deserializeManagers(
         String managerFileName
     ) throws IOException, ClassNotFoundException {
@@ -85,13 +105,13 @@ public class Session implements AutoCloseable {
             }
         }
     }
-
+    
     private void throwIfClosed() {
         if (_closed) {
             throw new IllegalStateException("Session has been closed");
         }
     }
-
+    
     private static Optional<Manager> scanManager(
         Scanner scanner,
         Function<String, Boolean> stopHandler
@@ -101,7 +121,7 @@ public class Session implements AutoCloseable {
             int age;
             boolean isCompetent;
         };
-
+        
         var parsers = new Parser<?>[] {
             new SurnameParser(
                 value -> lambdaContext.surname = value),
@@ -110,7 +130,7 @@ public class Session implements AutoCloseable {
             new CompetenceParser(
                 value -> lambdaContext.isCompetent = value),
         };
-
+        
         boolean stopped = false;
         for (var parser : parsers) {
             String message = parser.getMessage();
@@ -126,7 +146,8 @@ public class Session implements AutoCloseable {
                 if (maybeError.isPresent()) {
                     System.out.println("Invalid value. Try again.");
                 }
-            } while (maybeError.isPresent());
+            }
+            while (maybeError.isPresent());
             if (stopped) {
                 break;
             }
