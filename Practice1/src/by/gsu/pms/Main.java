@@ -1,3 +1,5 @@
+package by.gsu.pms;
+
 import by.gsu.pms.ExpenseStat;
 
 import java.util.*;
