@@ -1,7 +1,7 @@
-package by.gsu.pms.practice2.part3;
+package by.gsu.pms.part3;
 
-import by.gsu.pms.practice2.Money;
-import by.gsu.pms.practice2.Period;
+import by.gsu.pms.Period;
+import by.gsu.pms.Money;
 
 public class SimplePlan implements Plan {
     public SimplePlan(Money fee, Period period) {

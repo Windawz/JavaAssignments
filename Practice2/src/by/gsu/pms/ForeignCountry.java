@@ -1,4 +1,4 @@
-package by.gsu.pms.practice2;
+package by.gsu.pms;
 
 public enum ForeignCountry {
     COUNTRY1,

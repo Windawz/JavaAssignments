@@ -1,9 +1,9 @@
-package by.gsu.pms.practice2.part1;
+package by.gsu.pms.part1;
 
-import by.gsu.pms.practice2.*;
+import by.gsu.pms.CommonPlan;
+import by.gsu.pms.Money;
+import by.gsu.pms.Period;
 
-import java.text.MessageFormat;
-import java.util.EnumSet;
 import java.util.Optional;
 
 public class Plan implements CommonPlan {

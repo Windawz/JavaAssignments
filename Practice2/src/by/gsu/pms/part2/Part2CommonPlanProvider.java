@@ -1,6 +1,6 @@
-package by.gsu.pms.practice2.part2;
+package by.gsu.pms.part2;
 
-import by.gsu.pms.practice2.*;
+import by.gsu.pms.*;
 
 import java.util.EnumSet;
 import java.util.List;

@@ -1,9 +1,9 @@
-package by.gsu.pms.practice2.part2;
+package by.gsu.pms.part2;
 
-import by.gsu.pms.practice2.*;
+import by.gsu.pms.Money;
+import by.gsu.pms.Period;
+import by.gsu.pms.Traffic;
 
-import java.text.MessageFormat;
-import java.util.EnumSet;
 import java.util.Optional;
 
 public class WebPlan implements Plan {

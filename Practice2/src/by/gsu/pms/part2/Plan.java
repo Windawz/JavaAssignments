@@ -1,8 +1,8 @@
-package by.gsu.pms.practice2.part3;
+package by.gsu.pms.part2;
 
-import by.gsu.pms.practice2.CommonPlan;
-import by.gsu.pms.practice2.Money;
-import by.gsu.pms.practice2.Period;
+import by.gsu.pms.CommonPlan;
+import by.gsu.pms.Period;
+import by.gsu.pms.Money;
 
 import java.util.Optional;
 

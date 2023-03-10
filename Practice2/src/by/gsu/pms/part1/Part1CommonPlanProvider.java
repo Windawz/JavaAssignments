@@ -1,11 +1,9 @@
-package by.gsu.pms.practice2.part1;
+package by.gsu.pms.part1;
 
-import by.gsu.pms.practice2.*;
+import by.gsu.pms.*;
 
-import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class Part1CommonPlanProvider implements CommonPlanProvider {
     @Override

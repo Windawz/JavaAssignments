@@ -1,10 +1,7 @@
-package by.gsu.pms.practice2.part2;
+package by.gsu.pms.part2;
 
-import by.gsu.pms.practice2.*;
-
-import java.text.MessageFormat;
-import java.util.EnumSet;
-import java.util.Optional;
+import by.gsu.pms.Money;
+import by.gsu.pms.Period;
 
 public class SimplePlan implements Plan {
     public SimplePlan(Money fee, Period period) {

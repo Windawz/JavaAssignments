@@ -1,12 +1,10 @@
-package by.gsu.pms.practice2.part1;
+package by.gsu.pms.part1;
 
-import by.gsu.pms.practice2.ForeignCountry;
-import by.gsu.pms.practice2.Money;
-import by.gsu.pms.practice2.Period;
+import by.gsu.pms.Period;
+import by.gsu.pms.ForeignCountry;
+import by.gsu.pms.Money;
 
-import java.text.MessageFormat;
 import java.util.EnumSet;
-import java.util.List;
 import java.util.Optional;
 
 public class ForeignCallsPlan extends Plan {

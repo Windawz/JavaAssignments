@@ -1,10 +1,9 @@
-package by.gsu.pms.practice2.part1;
+package by.gsu.pms.part1;
 
-import by.gsu.pms.practice2.Money;
-import by.gsu.pms.practice2.Period;
-import by.gsu.pms.practice2.Traffic;
+import by.gsu.pms.Period;
+import by.gsu.pms.Money;
+import by.gsu.pms.Traffic;
 
-import java.text.MessageFormat;
 import java.util.Optional;
 
 public class WebPlan extends Plan {
