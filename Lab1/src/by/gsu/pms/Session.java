@@ -4,19 +4,16 @@ import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.function.Function;
 
 public class Session implements AutoCloseable {
-    public Session(
-        String managerFileName
-    ) throws IOException, ClassNotFoundException {
-        _managerFileName = managerFileName;
+    public Session() {
     }
 
-    private final String _managerFileName;
-    private final ArrayList<Manager> _managers = new ArrayList<>();
+    private final List<Manager> _managers = List.of();
     private boolean _closed = false;
 
     public void run() {
@@ -24,7 +21,7 @@ public class Session implements AutoCloseable {
     }
 
     @Override
-    public void close() throws IOException {
+    public void close() throws Exception {
         if (!_closed) {
             _closed = true;
         }
